@@ -76,10 +76,10 @@ var FC = {
 	//@	base64
 	b64: {
 		en: function(str) {
-			return new Buffer('base64').toString('base64');
+			return Buffer.from(str).toString('base64');
 		},
 		de: function(str) {
-			return new Buffer(str, 'base64').toString();
+			return Buffer.from(str, 'base64').toString();
 		}
 	},
 	//@	安全字符串(字母数字下划线)
