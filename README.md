@@ -5,7 +5,7 @@
 
 ```
 $ wget https://raw.githubusercontent.com/AntSwordProject/ant/master/docker-compose.yml
-$ docker-compose up -d -f docker-compose.yml
+$ docker-compose -f docker-compose.yml up -d 
 ```
 
 如果需要配置邮件, 只需要修改 `docker-compose.yml` 中部分环境变量

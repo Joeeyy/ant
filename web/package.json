@@ -1,6 +1,6 @@
 {
   "name": "ant",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "> 代码仅供学习参考与合法的研究测试。",
   "main": "app.js",
   "dependencies": {
