@@ -1,0 +1,37 @@
+version: "2"
+
+services:
+  ant_db:
+    image: mongo:3.6.3
+    container_name: ant_db
+    environment:
+      - MONGO_DATA_DIR=/data/db
+    volumes:
+      - ./ant_db_data:/data/db
+    ports:
+      - 127.0.0.1:27017:27017
+    network_mode: "bridge"
+    command: mongod
+  ant:
+    image: medicean/ant:latest
+    container_name: ant_web
+    # 如果想自己编译就把这个打开
+    # build:
+    #   context: ./web/
+    #   dockerfile: Dockerfile
+    environment:
+      - ANT_MONGO_URI=mongodb://ant_db:27017/ant
+      - ANT_MAIL_NAME=ANT
+      - ANT_MAIL_HOST=smtp.qq.com
+      - ANT_MAIL_PORT=465
+      - ANT_MAIL_SECURE=true
+      - ANT_MAIL_EMAIL=email@user.com
+      - ANT_MAIL_PASSWORD=email-password
+    network_mode: "bridge"
+    depends_on:
+      - ant_db
+    links:
+      - ant_db
+    ports:
+      - 3000:3000
+  

@@ -44,6 +44,9 @@ module.exports = function(app, handler) {
             'ant.cache',
             'ant.login.user',
             'ant.login.other'
+        ],
+        install: [
+            'ant.install'
         ]
     }
     addons.login.forEach(function(i) {
@@ -58,9 +61,18 @@ module.exports = function(app, handler) {
     addons.admin.forEach(function(i) {
         require('../addons/' + i + '/route.js')(app, db, fc);
     });
+
+    addons.install.forEach(function(i) {
+        require('../addons/' + i + '/route.js')(app, db, fc);
+    });
+
     //-    插件列表
     app.route('/addons')
         .get(function(req, res) {
+            if (!fc.isinstall()) {
+                res.send(addons.install)
+                return
+            }
             fc.islogin(req, res,
             function(user) {
                 res.send(user.isadmin ? addons.system.concat(addons.admin) : addons.system)

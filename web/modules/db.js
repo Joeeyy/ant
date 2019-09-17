@@ -3,7 +3,11 @@
 //
 
 var mongoose = require('mongoose')
-var mongodb = mongoose.createConnection('127.0.0.1', 'ant')
+var config = {
+	// mongodb://[username:password@]host1[:port1][,host2[:port2],…[,hostN[:portN]]][/[database][?options]]
+	mongouri: process.env.ANT_MONGO_URI || 'mongodb://127.0.0.1/ant',
+}
+var mongodb = mongoose.createConnection(config['mongouri'])
 
 module.exports = {
 	cache: {},

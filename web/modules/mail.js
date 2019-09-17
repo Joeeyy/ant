@@ -6,16 +6,19 @@ var fc = require('./func'),
 	transport  = require('nodemailer-smtp-transport');
 
 var config = {
-	name: 'ANT',
-	email: 'email@user.com',
-	password: 'email-password'
+	name: process.env.ANT_MAIL_NAME || 'ANT',
+	host: process.env.ANT_MAIL_HOST || 'smtp.qq.com',
+	port: process.env.ANT_MAIL_PORT || 465,
+	secure: process.env.ANT_MAIL_SECURE || true,
+	email: process.env.ANT_MAIL_EMAIL || 'email@user.com',
+	password: process.env.ANT_MAIL_PASSWORD || 'email-password'
 }
 
 module.exports = {
 	_transport: nodemailer.createTransport(transport({
-		host: 'smtp.qq.com',
-		port: 465,
-		secure: true,
+		host: config['host'],
+		port: config['port'],
+		secure: config['secure'],
 		auth: {
 			user: config['email'],
 			pass: config['password']

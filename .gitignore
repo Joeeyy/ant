@@ -1,0 +1,4 @@
+.DS_*
+ant_db_data/
+web/node_modules/
+.vscode/

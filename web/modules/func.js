@@ -4,6 +4,9 @@
 var fs = require('fs')
 
 var FC = {
+	isinstall: function() {
+		return fs.existsSync('install.lock');
+	},
 	//@	判断是否登录
 	islogin: function(req, res, success, error) {
 		if (req.session.login === true) {
