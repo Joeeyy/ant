@@ -145,13 +145,15 @@ module.exports = function(app, db, udb, fc, path, handler) {
                         host: host,
                         project: project.name
                     });
-                    dingtalkbot.send({
-                        title: '主机上线',
-                        ip: host.ip,
-                        addr: host.addr,
-                        referer: host.referer,
-                        ua: host.ua
-                    });
+                    if (!HOST.client.cache[sid]) {
+                        dingtalkbot.send({
+                            title: '主机上线',
+                            ip: host.ip,
+                            addr: host.addr,
+                            referer: host.referer,
+                            ua: host.ua
+                        });
+                    };
                 })
             },
             offline: function(sid, user, host) {
