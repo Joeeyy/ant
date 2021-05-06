@@ -2,7 +2,8 @@
 //  蚁弹超人:主机管理
 //
 var io = require('socket.io'),
-    qqwry = require("lib-qqwry").info();
+    qqwry = require("lib-qqwry").info(),
+    dingtalkbot = require('../../../modules/dingtalk');
 
 module.exports = function(app, db, udb, fc, path, handler) {
     var HOST = {
@@ -143,6 +144,13 @@ module.exports = function(app, db, udb, fc, path, handler) {
                     HOST.users.send(project.user, 'online', {
                         host: host,
                         project: project.name
+                    });
+                    dingtalkbot.send({
+                        title: '主机上线',
+                        ip: host.ip,
+                        addr: host.addr,
+                        referer: host.referer,
+                        ua: host.ua
                     });
                 })
             },
