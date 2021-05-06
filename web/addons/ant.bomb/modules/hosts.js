@@ -145,7 +145,8 @@ module.exports = function(app, db, udb, fc, path, handler) {
                         host: host,
                         project: project.name
                     });
-                    if (!HOST.client.cache[sid]) {
+                    if (!HOST.client.cache[host._id]) {
+                        HOST.client.cache[host._id] = true;
                         dingtalkbot.send({
                             title: '主机上线',
                             ip: host.ip,
