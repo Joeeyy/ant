@@ -13,7 +13,7 @@ services:
     network_mode: "bridge"
     command: mongod
   ant:
-    image: medicean/ant:latest
+    image: joeeeee/ant:latest
     container_name: ant_web
     # 如果想自己编译就把这个打开
     # build:
