@@ -27,6 +27,8 @@ services:
       - ANT_MAIL_SECURE=true
       - ANT_MAIL_EMAIL=email@user.com
       - ANT_MAIL_PASSWORD=email-password
+      - ANT_DINGTALK_ROBOT_AK=**your key**
+      - ANT_DINGTALK_ROBOT_KEYWORD=**your keyword**
     network_mode: "bridge"
     depends_on:
       - ant_db
