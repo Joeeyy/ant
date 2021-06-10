@@ -1,6 +1,19 @@
 # 蚁逅@1.0
 > 代码仅供学习参考与合法的研究测试。
 
+> note:
+> 访问触发，产生记录
+> 
+> Docker git: https://github.com/Joeeyy/ant.git
+> 
+> 下载后部署，需要添加环境变量实现钉钉机器人告警：
+> 
+> export ANT_DINGTALK_ROBOT_KEYWORD=xxx
+> export ANT_DINGTALK_ROBOT_AK=xxx
+> 或者直接使用xss目录下的docker-compose.yml进行部署：
+> 
+> docker-compose -f docker-compose.yml up -d
+
 ## 使用 Docker 
 
 ```
